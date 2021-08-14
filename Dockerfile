@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:buster
 ENV  DEBIAN_FRONTEND noninteractive
 
 RUN  apt-get -q update \
