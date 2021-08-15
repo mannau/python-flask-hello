@@ -10,7 +10,7 @@ def hello():
     global request_count
     request_count += 1
 
-    html = "<h1>Hello Docker Swarm!</h1>"
+    html = "<h1>Hello Python Flask!</h1>"
     html += "<hr>"
 
     html += "<p>"
