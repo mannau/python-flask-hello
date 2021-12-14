@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM docker.rbinternational.corp/debian:buster
 ENV  DEBIAN_FRONTEND noninteractive
 
 RUN  apt-get -q update \

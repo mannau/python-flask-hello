@@ -1,6 +1,8 @@
 import socket
 import netifaces
 from flask import Flask
+from flask import request
+
 app = Flask(__name__)
 
 request_count=0
@@ -27,6 +29,10 @@ def hello():
     html += "</p>"
 
     html += "<p>"
+    html += "Headers: " + str(dict(request.headers)) + "<br \>"
+    html += "</p>"
+
+    html += "<p>"
 
     for interface in netifaces.interfaces():
         if interface in ['lo']:
@@ -42,6 +48,25 @@ def hello():
 
     html += "</p>"
 
+
+    return html
+
+@app.route('/test')
+def test():
+    html = "<h1>ALB request headers</h1>"
+    html += "<hr>"
+
+    html += "<p>"
+    html += "x-amzn-oidc-accesstoken: " + str(request.headers.get('x-amzn-oidc-accesstoken')) + "<br \>"
+    html += "</p>"
+
+    html += "<p>"
+    html += "x-amzn-oidc-identity: " + str(request.headers.get('x-amzn-oidc-identity')) + "<br \>"
+    html += "</p>"
+
+    html += "<p>"
+    html += "x-amzn-oidc-data: " + str(request.headers.get('x-amzn-oidc-data')) + "<br \>"
+    html += "</p>"
 
     return html
 
